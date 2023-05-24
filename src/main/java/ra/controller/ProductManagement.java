@@ -1,4 +1,4 @@
-package ra.controller.admin;
+package ra.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ra.model.entity.Catalog;
 import ra.model.entity.Product;
-import ra.service.ICatalogService;
-import ra.service.IProductService;
-import ra.service.serviceIpm.CatalogServiceImpl;
-import ra.service.serviceIpm.ProductServiceImpl;
+import ra.model.service.ICatalogService;
+import ra.model.service.IProductService;
+import ra.model.serviceImpl.CatalogServiceImpl;
+import ra.model.serviceImpl.ProductServiceImpl;
 
 import java.io.File;
 import java.io.IOException;

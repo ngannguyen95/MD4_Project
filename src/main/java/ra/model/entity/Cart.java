@@ -7,7 +7,7 @@ import java.util.Date;
 public class Cart {
     private int cartId;
     private int userId;
-    private String userService;
+    private String userReceiver;
     private float total;
     private String phone;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -19,10 +19,23 @@ public class Cart {
     public Cart(int cartId, int userId, String user, float total, String phone, String address) {
     }
 
-    public Cart(int cartId, int userId, String userService, float total, String phone, Date orderDate, String address, boolean status, boolean style) {
+    public Cart() {
+    }
+
+    public Cart(int cartId, int userId, String userReceiver, float total, String phone, Date orderDate, String address) {
         this.cartId = cartId;
         this.userId = userId;
-        this.userService = userService;
+        this.userReceiver = userReceiver;
+        this.total = total;
+        this.phone = phone;
+        this.orderDate = orderDate;
+        this.address = address;
+    }
+
+    public Cart(int cartId, int userId, String userReceiver, float total, String phone, Date orderDate, String address, boolean status, boolean style) {
+        this.cartId = cartId;
+        this.userId = userId;
+        this.userReceiver = userReceiver;
         this.total = total;
         this.phone = phone;
         this.orderDate = orderDate;
@@ -47,12 +60,12 @@ public class Cart {
         this.userId = userId;
     }
 
-    public String getUserService() {
-        return userService;
+    public String getUserReceiver() {
+        return userReceiver;
     }
 
-    public void setUserService(String userService) {
-        this.userService = userService;
+    public void setUserReceiver(String userReceiver) {
+        this.userReceiver = userReceiver;
     }
 
     public float getTotal() {

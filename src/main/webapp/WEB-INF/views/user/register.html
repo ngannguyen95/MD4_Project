@@ -47,6 +47,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
+<!--                                            <p id="eName" style="color: red"></p>-->
                                             <input type="text" id="userName" name="userName"
                                                    class="form-control form-control-lg"/>
                                             <label class="form-label" for="userName">User name</label>
@@ -54,6 +55,7 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
+<!--                                            <p id="eFname" style="color: red"></p>-->
                                             <input type="text" id="fullName" name="fullName"
                                                    class="form-control form-control-lg"/>
                                             <label class="form-label" for="fullName">Full name</label>
@@ -83,47 +85,75 @@
                                     <label class="form-label" for="address">Address</label>
                                 </div>
 
-                                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2" name="sex">
+                                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
                                     <h6 class="mb-0 me-4">Gender: </h6>
                                     <div class="form-check form-check-inline mb-0 me-4">
-                                        <input class="form-check-input" type="radio"
-                                               id="female"
-                                               value="male"/>
+                                        <input class="form-check-input" type="radio"  name="sex"
+                                               id="female"/>
                                         <label class="form-check-label" for="female">Female</label>
                                     </div>
 
-                                    <div class="form-check form-check-inline mb-0 me-4">
+                                    <div class="form-check form-check-inline mb-0 me-4" >
                                         <input class="form-check-input" type="radio"
                                                id="male"
-                                               value="male"/>
+                                               name="sex"/>
                                         <label class="form-check-label" for="male">Male</label>
                                     </div>
 
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="password"
+                                    <input type="password" name="password" id="password" onblur="validateInput()"
                                            class="form-control form-control-lg"/>
                                     <label class="form-label" for="password">Password</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="repassword" id="repassword"
+                                    <input type="password" name="repassword" id="repassword" onblur="validateInput()"
                                            class="form-control form-control-lg"/>
                                     <label class="form-label" for="repassword">RePassword</label>
+                                    <p style="color: red" id="error"></p>
                                 </div>
                                 <div class="d-flex justify-content-end pt-3">
                                     <button type="submit" class="btn btn-warning btn-lg ms-2">Submit</button>
                                 </div>
-
                             </div>
                         </div>
                         </form>
+                        <p style="color: red" th:text="${error}"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<!--    <script>-->
+<!--        function validateInput() {-->
+<!--            var userName = document.getElementById("userName").value;-->
+<!--            var eName = document.getElementById("eName");-->
+<!--            if (userName === "") {-->
+<!--                eName.innerHTML = "Not Required";-->
+<!--            } else {-->
+<!--                eName.innerHTML = "";-->
+<!--            }-->
+<!--            var fullName = document.getElementById("fullName").value;-->
+<!--            var eFname = document.getElementById("eFname");-->
+<!--            if (fullName === "") {-->
+<!--                eFname.innerHTML = "Not Required";-->
+<!--            } else {-->
+<!--                eFname.innerHTML = "";-->
+<!--            }-->
+<!--            var password = document.getElementById("password").value;-->
+<!--            var repassword=document.getElementById('repassword').value;-->
+<!--            var error = document.getElementById("error");-->
+<!--            if (password === "") {-->
+<!--                error.innerHTML = "Not Required";-->
+<!--            } else if (!password===repassword){-->
+<!--                error.innerHTML = "";-->
+<!--            }else {-->
+<!--                error.innerHTML='';-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
 </section>
 </body>
 </html>

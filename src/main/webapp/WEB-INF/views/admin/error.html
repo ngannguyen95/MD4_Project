@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" th:href="@{/images/p1.png}" type="">
     <title> Cakkery </title>
 </head>
 <body>
-<h2>Error</h2>
+<h2 style="text-align: center">Error</h2>
+<p style="color: red" th:value="${error}"></p>
 </body>
 </html>

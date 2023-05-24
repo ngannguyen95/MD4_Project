@@ -1,9 +1,9 @@
-package ra.service.serviceIpm;
+package ra.model.daoImpl;
 
+import ra.model.dao.IUserDao;
 import ra.model.entity.User;
 import ra.model.entity.UserLogin;
 import ra.model.util.ConnectionDB;
-import ra.service.IUserService;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -11,8 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserServiceImpl implements IUserService {
-
+public class UserDaoImpl implements IUserDao {
     @Override
     public List<User> findAll() {
         Connection conn = null;
@@ -78,17 +77,13 @@ public class UserServiceImpl implements IUserService {
         CallableStatement call = null;
         try {
             conn = ConnectionDB.openConnection();
-            call = conn.prepareCall("{call  updateUser(?,?,?,?,?,?,?,?,?)}");
+            call = conn.prepareCall("{call  updateUser(?,?,?,?,?,?)}");
             call.setInt(1, user.getUserId());
             call.setString(2, user.getUserName());
             call.setString(3, user.getFullName());
-            call.setInt(4, user.getRole());
-            call.setInt(5, user.getAge());
-            call.setBoolean(6, user.isSex());
-            call.setString(7, user.getPhone());
-            call.setString(8, user.getAddress());
-            call.setString(9, user.getPassword());
-            call.setBoolean(10, user.isStatus());
+            call.setInt(4, user.getAge());
+            call.setString(5, user.getPhone());
+            call.setString(6, user.getAddress());
             call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -238,10 +233,31 @@ public class UserServiceImpl implements IUserService {
             conn = ConnectionDB.openConnection();
             call = conn.prepareCall("{call changeStatus(?)}");
             call.setInt(1, idChange);
-             call.executeUpdate();
+            call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }finally {
+            ConnectionDB.closeConnection(conn,call);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean changePassword(User user) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = ConnectionDB.openConnection();
+            call = conn.prepareCall("{call changePassword(?,?)}");
+            call.setInt(1, user.getUserId());
+            call.setString(2,user.getPassword());
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            ConnectionDB.closeConnection(conn,call);
         }
         return true;
     }

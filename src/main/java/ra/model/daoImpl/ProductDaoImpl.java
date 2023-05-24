@@ -1,8 +1,8 @@
-package ra.service.serviceIpm;
+package ra.model.daoImpl;
 
+import ra.model.dao.IProductDao;
 import ra.model.entity.Product;
 import ra.model.util.ConnectionDB;
-import ra.service.IProductService;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductServiceImpl implements IProductService {
+public class ProductDaoImpl implements IProductDao {
     @Override
     public List<Product> findAll() {
         Connection conn = null;
@@ -125,7 +125,7 @@ public class ProductServiceImpl implements IProductService {
             call.setString(1, product.getProName());
             ResultSet rs = call.executeQuery();
             while (rs.next()) {
-               product1 = new Product();
+                product1 = new Product();
                 product1.setProId(rs.getInt(1));
                 product1.setProName(rs.getString(2));
                 product1.setImage(rs.getString(3));
@@ -176,4 +176,5 @@ public class ProductServiceImpl implements IProductService {
         }
         return true;
     }
+
 }

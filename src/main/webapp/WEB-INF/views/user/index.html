@@ -31,6 +31,15 @@
     <!-- responsive style -->
     <link th:href="@{/css/responsive.css}" rel="stylesheet"/>
 
+    <style>
+        .center-btn {
+            width: 100px;
+            height: 30px;
+            margin: 0 auto;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -74,9 +83,8 @@
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="detailUser">My Acount</a></li>
-                                    <li><a class="dropdown-item" href="#">My Cart</a></li>
-                                    <li><a class="dropdown-item" href="logout">LogOut</a></li>
+                                    <li><a class="dropdown-item" href="/userManagement/account">My Account</a></li>
+                                    <li><a class="dropdown-item" href="/logout">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -353,8 +361,8 @@
             </h2>
         </div>
         <div class="row">
-            <th:block th:each="pro:${productList}">
-                <div class="col-sm-6 col-md-4 col-lg-3">
+            <th:block th:each="pro:${productList}" >
+                <div th:if="${pro.proStatus}" class="col-sm-6 col-md-4 col-lg-3">
                     <div class="box">
                         <div>
                             <div class="img-box">
@@ -362,14 +370,12 @@
                             </div>
                             <div class="detail-box">
                                 <a href="" th:text="${pro.proName}" th:name="proName">
-                                    Wedding Cake
                                 </a>
                                 <h6 th:text="'$'+${pro.price}" th:name="price">
-                                    $38
                                 </h6>
                             </div>
-                            <a th:href="${session.userlogin==null}?'login':'cartManagement/addToCart/'+${pro.proId}">
-                                <button type="submit" class="btn btn-secondary">Add To Cart</button>
+                            <a style="margin: 0 auto" th:href="${session.userlogin==null}?'login':'/cartManagement/addToCart/'+${pro.proId}">
+                                <button type="submit" class="btn btn-outline-danger btn-lg btn-sm center-btn">Add To Cart</button>
                             </a>
                         </div>
                     </div>

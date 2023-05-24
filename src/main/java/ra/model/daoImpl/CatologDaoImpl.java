@@ -1,8 +1,8 @@
-package ra.service.serviceIpm;
+package ra.model.daoImpl;
 
+import ra.model.dao.ICatalogDao;
 import ra.model.entity.Catalog;
 import ra.model.util.ConnectionDB;
-import ra.service.ICatalogService;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CatalogServiceImpl implements ICatalogService {
+public class CatologDaoImpl implements ICatalogDao {
     @Override
     public List<Catalog> findAll() {
         Connection conn = null;
@@ -156,4 +156,6 @@ public class CatalogServiceImpl implements ICatalogService {
         }
         return true;
     }
+
+
 }

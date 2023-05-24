@@ -1,12 +1,12 @@
-package ra.controller.admin;
+package ra.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ra.model.entity.Catalog;
-import ra.service.ICatalogService;
-import ra.service.serviceIpm.CatalogServiceImpl;
+import ra.model.service.ICatalogService;
+import ra.model.serviceImpl.CatalogServiceImpl;
 
 import java.util.List;
 

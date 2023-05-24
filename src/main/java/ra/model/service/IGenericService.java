@@ -1,4 +1,4 @@
-package ra.service;
+package ra.model.service;
 
 import java.util.List;
 
